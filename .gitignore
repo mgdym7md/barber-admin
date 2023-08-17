@@ -21,6 +21,7 @@ docker-compose.yml
 -lock.*
 *.lock
 .vs
+tests
 composer.phar
 /.vscode
 /encrypted

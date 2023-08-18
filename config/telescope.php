@@ -93,6 +93,7 @@ return [
 
     'only_paths' => [
         // 'api/*'
+        '*'
     ],
 
     'ignore_paths' => [

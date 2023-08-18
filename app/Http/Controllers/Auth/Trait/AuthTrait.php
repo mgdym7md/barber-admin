@@ -19,7 +19,7 @@ trait AuthTrait
         $remember = $request->remember_me;
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1], $remember)) {
-            event(new UserLoginSuccess($request, auth()->user()));
+//            event(new UserLoginSuccess($request, auth()->user()));
 
             return true;
         }

@@ -43,9 +43,9 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         Telescope::hideRequestParameters(['_token']);
 
         Telescope::hideRequestHeaders([
-            'cookie',
-            'x-csrf-token',
-            'x-xsrf-token',
+//            'cookie',
+//            'x-csrf-token',
+//            'x-xsrf-token',
         ]);
     }
 

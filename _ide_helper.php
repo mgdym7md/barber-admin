@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.52.15.
+ * Generated for Laravel 9.52.10.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1252,7 +1252,7 @@
          * Call the given Closure / class@method and inject its dependencies.
          *
          * @param callable|string $callback
-         * @param array<string, mixed> $parameters
+         * @param \Illuminate\Container\array<string,  mixed>  $parameters
          * @param string|null $defaultMethod
          * @return mixed 
          * @throws \InvalidArgumentException
@@ -13828,12 +13828,11 @@
          * @see \Spatie\WebhookClient\WebhookClientServiceProvider::packageBooted()
          * @param string $url
          * @param string $name
-         * @param mixed $method
          * @static 
          */ 
-        public static function webhooks($url, $name = 'default', $method = 'post')
+        public static function webhooks($url, $name = 'default')
         {
-                        return \Illuminate\Routing\Router::webhooks($url, $name, $method);
+                        return \Illuminate\Routing\Router::webhooks($url, $name);
         }
          
     }
@@ -17869,6 +17868,47 @@
      
 }
 
+    namespace App\Currency { 
+            /**
+     * 
+     *
+     */ 
+        class CurrencyFacades {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getDefaultCurrency($array = false)
+        {
+                        /** @var \App\Currency\CurrencyChange $instance */
+                        return $instance->getDefaultCurrency($array);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function defaultSymbol()
+        {
+                        /** @var \App\Currency\CurrencyChange $instance */
+                        return $instance->defaultSymbol();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function format($amount)
+        {
+                        /** @var \App\Currency\CurrencyChange $instance */
+                        return $instance->format($amount);
+        }
+         
+    }
+     
+}
+
     namespace Berkayk\OneSignal { 
             /**
      * 
@@ -21130,7 +21170,7 @@
          *
          * @param string $name
          * @param string $messageLevel
-         * @param array<int, mixed> $metaData
+         * @param \Spatie\FlareClient\array<int,  mixed> $metaData
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -21223,7 +21263,7 @@
                     /**
          * 
          *
-         * @param array<int, string> $fieldNames
+         * @param \Spatie\FlareClient\array<int,  string> $fieldNames
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -21299,7 +21339,7 @@
          * 
          *
          * @param string $groupName
-         * @param array<string, mixed> $properties
+         * @param \Spatie\FlareClient\array<string,  mixed> $properties
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -21438,7 +21478,7 @@
                     /**
          * DataTables using Collection.
          *
-         * @param \Illuminate\Support\Collection<array-key, array>|array $collection
+         * @param \Illuminate\Support\Collection<array-key,  array>|array  $collection
          * @return \Yajra\DataTables\CollectionDataTable 
          * @static 
          */ 
@@ -21450,7 +21490,7 @@
                     /**
          * DataTables using Collection.
          *
-         * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection<array-key, array>|array $resource
+         * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection<array-key,  array>|array  $resource
          * @return \Yajra\DataTables\ApiResourceDataTable|\Yajra\DataTables\DataTableAbstract 
          * @static 
          */ 
@@ -21632,12 +21672,11 @@
          * @see \Spatie\WebhookClient\WebhookClientServiceProvider::packageBooted()
          * @param string $url
          * @param string $name
-         * @param mixed $method
          * @static 
          */ 
-        public static function webhooks($url, $name = 'default', $method = 'post')
+        public static function webhooks($url, $name = 'default')
         {
-                        return \Illuminate\Routing\Router::webhooks($url, $name, $method);
+                        return \Illuminate\Routing\Router::webhooks($url, $name);
         }
          
     }
@@ -25408,8 +25447,8 @@ namespace  {
                 /**
              * Increment the given column's values by the given amounts.
              *
-             * @param array<string, float|int|numeric-string> $columns
-             * @param array<string, mixed> $extra
+             * @param \Illuminate\Database\Query\array<string,  float|int|numeric-string>  $columns
+             * @param \Illuminate\Database\Query\array<string,  mixed>  $extra
              * @return int 
              * @throws \InvalidArgumentException
              * @static 
@@ -25423,8 +25462,8 @@ namespace  {
                 /**
              * Decrement the given column's values by the given amounts.
              *
-             * @param array<string, float|int|numeric-string> $columns
-             * @param array<string, mixed> $extra
+             * @param \Illuminate\Database\Query\array<string,  float|int|numeric-string>  $columns
+             * @param \Illuminate\Database\Query\array<string,  mixed>  $extra
              * @return int 
              * @throws \InvalidArgumentException
              * @static 
@@ -25731,6 +25770,7 @@ namespace  {
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Menu extends \Lavary\Menu\Facade {}
             class AuthHelper extends \App\Helpers\AuthHelper {}
+            class Currency extends \App\Currency\CurrencyFacades {}
             class OneSignal extends \Berkayk\OneSignal\OneSignalFacade {}
             class Image extends \Intervention\Image\Facades\Image {}
             class Flash extends \Laracasts\Flash\Flash {}

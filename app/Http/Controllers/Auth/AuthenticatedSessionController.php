@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         $isLogin = $this->loginTrait($request);
 
         if ($isLogin) {
-//            $request->session()->regenerate();
+            $request->session()->regenerate();
 
             return redirect()->intended(RouteServiceProvider::HOME);
         }

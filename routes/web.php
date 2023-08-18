@@ -58,8 +58,8 @@ Route::group(['prefix' => 'app', 'middleware' => 'role:admin|manager'], function
         Route::post('/permission-role/store/{role_id}', [RolePermission::class, 'store'])->name('permission-role.store');
         Route::get('/permission-role/reset/{role_id}', [RolePermission::class, 'reset_permission'])->name('permission-role.reset');
         // Role & Permissions Crud
-        Route::resource('permission', PermissionController::class)->name('*', 'permission');
-        Route::resource('role', RoleController::class)->name('*', 'role');
+        Route::resource('permission', PermissionController::class);
+        Route::resource('role', RoleController::class);
 
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
 
@@ -67,7 +67,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'role:admin|manager'], function
             Route::post('update-status/{id}', [ModuleController::class, 'update_status'])->name('update_status');
         });
 
-        Route::resource('module', ModuleController::class)->name('*', 'module');
+        Route::resource('module', ModuleController::class);
 
         /*
           *
@@ -167,7 +167,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'role:admin|manager'], function
 
             });
             Route::get('branch-info', [BranchController::class, 'branchData'])->name('branchData');
-            Route::resource('branch', BranchController::class)->name('*', 'branch');
+            Route::resource('branch', BranchController::class);
 
             /*
             *

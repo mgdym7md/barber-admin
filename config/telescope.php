@@ -93,12 +93,10 @@ return [
 
     'only_paths' => [
         // 'api/*'
-        '*'
     ],
 
     'ignore_paths' => [
         'nova-api*',
-        'telescope*',
     ],
 
     'ignore_commands' => [

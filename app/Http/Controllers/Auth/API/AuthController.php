@@ -169,7 +169,7 @@ class AuthController extends Controller
         if ($request->is('api*') && $user != null) {
             if(isset($user->player_id))
             $user->player_id = null;
-            Auth::user()->tokens()->delete();
+            Auth::user()->logout();
             $user->save();
 
             return response()->json(['status' => true, 'message' => __('messages.user_logout')]);

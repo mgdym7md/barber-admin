@@ -241,10 +241,18 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             ->withSum('tip_earning', 'tip_amount');
     }
 
-    public function logout()
+    public function logout($request)
     {
         $this->update_player_id(null);
         //remove sanctum token
-        $this->tokens()->delete();
+        $this->currentAccessToken()->delete();
+        // Get bearer token from the request
+        $accessToken = $request->bearerToken();
+
+        // Get access token from database
+        $token = PersonalAccessToken::findToken($accessToken);
+
+        // Revoke token
+        $token->delete();
     }
 }

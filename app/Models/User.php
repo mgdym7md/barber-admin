@@ -245,8 +245,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function logout($request)
     {
         $this->update_player_id(null);
-        //remove sanctum token
-        $this->currentAccessToken()->delete();
         // Get bearer token from the request
         $accessToken = $request->bearerToken();
 

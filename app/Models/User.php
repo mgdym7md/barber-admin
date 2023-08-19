@@ -240,4 +240,11 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
             ->withSum('commission_earning', 'commission_amount')
             ->withSum('tip_earning', 'tip_amount');
     }
+
+    public function logout()
+    {
+        $this->update_player_id(null);
+        //remove sanctum token
+        $this->tokens()->delete();
+    }
 }

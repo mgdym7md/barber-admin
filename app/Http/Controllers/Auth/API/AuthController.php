@@ -46,11 +46,11 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $user = User::where('email', request('email'))->first();
+        $user = User::where('email', request('email'))->orWhere('mobile', request('mobile'))->first();
         if ($user == null) {
             return response()->json(['status' => false, 'message' => __('messages.register_before_login')]);
         }
-        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password')]) || Auth::attempt(['mobile' => request('mobile'), 'password' => request('password')])) {
             $user = Auth::user();
 
             if ($user->is_banned == 1 || $user->status == 0) {

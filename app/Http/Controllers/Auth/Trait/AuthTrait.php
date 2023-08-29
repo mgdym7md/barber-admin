@@ -17,8 +17,14 @@ trait AuthTrait
         $email = $request->email;
         $password = $request->password;
         $remember = $request->remember_me;
+        $mobile = $request->mobile;
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 1], $remember)) {
+//            event(new UserLoginSuccess($request, auth()->user()));
+
+            return true;
+        }
+        if(Auth::attempt(['mobile' => $mobile, 'password' => $password, 'status' => 1], $remember)){
 //            event(new UserLoginSuccess($request, auth()->user()));
 
             return true;
@@ -35,6 +41,7 @@ trait AuthTrait
             'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'password' => ['required', Rules\Password::defaults()],
             'gender' => ['required'],
+            'mobile' => ['required', 'string', 'max:191', 'unique:users'],
         ]);
 
         $arr = [

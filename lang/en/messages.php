@@ -129,6 +129,7 @@ return [
     'user_not_found' => 'User not found',
     'user' => 'user',
     'register_before_login' => 'Please register your account before login.',
+    'registered_before' => 'You have already registered with us.',
     'permission_denied' => 'Permission denied you are in demo mode.',
     'unauthorised' => 'Unauthorised',
     'verification_link' => 'verification-link-sent',

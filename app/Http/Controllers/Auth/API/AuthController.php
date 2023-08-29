@@ -20,10 +20,20 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        $email = $request->email;
+        $mobile = $request->mobile;
+        $user = User::where('email', $email)->orWhere('mobile', $mobile)->first();
+        if ($user != null) {
+            return response()->json(['status' => false, 'message' => __('messages.registered_before')]);
+        }
         $user = $this->registerTrait($request);
-        $success['token'] = $user->createToken(setting('app_name'))->plainTextToken;
-        $success['name'] = $user->name;
 
+//        $success['token'] = $user->createToken(setting('app_name'))->plainTextToken;
+//        $success['name'] = $user->name;
+        if ($user == null) {
+            return response()->json(['status' => false, 'message' => __('messages.register_before_login')]);
+        }
+        $user['api_token'] = $user->createToken(setting('app_name'))->plainTextToken;
         $userResource = new RegisterResource($user);
 
         return $this->sendResponse($userResource, __('messages.register_successfull'));

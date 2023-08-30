@@ -18,7 +18,7 @@ class RegisterResource extends JsonResource
             'id' => $this->id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'username' => $this->username,
+//            'username' => $this->username,
             'email' => $this->email,
             'api_token' => $this->api_token,
             'avatar' => $this->avatar,

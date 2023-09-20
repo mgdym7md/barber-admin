@@ -23,7 +23,7 @@ class DashboardController extends Controller
     {
         $perPage = $request->input('per_page', 10);
         $branchId = $request->input('branch_id'); // Assuming the branch ID is passed in the request
-
+        $branchId ??= 1; // If no branch ID is passed, use the first branch
         $branch = Branch::find($branchId);
 
         if (! $branch) {
@@ -91,7 +91,7 @@ class DashboardController extends Controller
         $results['subcategory'] = $subcategories;
 
         // Search in Bookings
-        $bookings = Booking::where('note', 'like', "%{$query}%")->get();
+        $bookings = Booking::where('note', 'like', "%{$query}%")->with(['user','branch'])->get();
         $results['bookings'] = $bookings;
 
         // Search in Services

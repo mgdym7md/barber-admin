@@ -45,6 +45,9 @@ class BranchController extends Controller
 
     public function branchDetails(Request $request)
     {
+        $request->validate([
+            'branch_id' => 'required',
+        ]);
         $branchId = $request->branch_id;
         $branch = Branch::with('businessHours', 'media', 'gallerys')->find($branchId);
 
@@ -71,6 +74,7 @@ class BranchController extends Controller
     {
 
         $branchId = $request->input('branch_id');
+        $branchId ??= 1; // If no branch ID is passed, use the first branch
 
         // $branchServices = ServiceBranches::where('branch_id', $branchId)->get();
         $branch = Branch::find($branchId);
@@ -111,6 +115,7 @@ class BranchController extends Controller
     public function branchEmployee(Request $request)
     {
         $branchId = $request->input('branch_id');
+        $branchId ??= 1; // If no branch ID is passed, use the first branch
 
         $perPage = $request->input('per_page', 10);
 
@@ -132,6 +137,7 @@ class BranchController extends Controller
     public function branchGallery(Request $request)
     {
         $branchId = $request->input('branch_id');
+        $branchId ??= 1; // If no branch ID is passed, use the first branch
 
         $branchGalleries = BranchGallery::where('branch_id', $branchId)->get();
 

@@ -17,6 +17,7 @@ class EmployeeController extends Controller
     public function employeeList(Request $request)
     {
         $branchId = $request->input('branch_id');
+        $branchId ??= 1; // If no branch ID is passed, use the first branch
         $perPage = $request->input('per_page', 10);
 
         $employee = User::role('employee')->with(['media', 'branches', 'services'])->where('status', 1);
@@ -46,6 +47,7 @@ class EmployeeController extends Controller
     public function employeeDetail(Request $request)
     {
         $branchId = $request->input('branch_id');
+        $branchId ??= 1; // If no branch ID is passed, use the first branch
         $employeeId = $request->input('employee_id');
 
         if ($branchId && $employeeId) {

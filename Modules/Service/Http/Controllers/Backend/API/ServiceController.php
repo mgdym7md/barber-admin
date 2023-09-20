@@ -137,6 +137,7 @@ class ServiceController extends Controller
     {
         $perPage = $request->input('per_page', 10);
         $branchId = $request->input('branch_id');
+        $branchId ??= 1; // If no branch ID is passed, use the first branch
 
         $services = Service::with(['media', 'branches', 'employee']);
         if ($request->has('branch_id')) {

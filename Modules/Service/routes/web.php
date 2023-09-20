@@ -77,7 +77,7 @@ Route::group(['prefix' => 'app', 'as' => 'backend.', 'middleware' => ['web', 'au
         Route::post('bulk-action', [ServicePackageController::class, 'bulk_action'])->name('bulk_action');
         Route::post('update-status/{id}', [ServicePackageController::class, 'update_status'])->name('update_status');
         Route::resource('servicepackage', ServicePackageController::class);
-        Route::get('/', 'TaxController@index');
+//        Route::get('/', 'TaxController@index');
 
     });
 

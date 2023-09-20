@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('branch', BranchController::class);
     Route::apiResource('user', UserApiController::class);
     Route::apiResource('setting', SettingController::class);
+    Route::get('setting-list', [SettingController::class, 'appConfiguraton']);
     Route::apiResource('notification', NotificationsController::class);
     Route::get('notification-list', [NotificationsController::class, 'notificationList']);
     Route::get('gallery-list', [DashboardController::class, 'globalGallery']);

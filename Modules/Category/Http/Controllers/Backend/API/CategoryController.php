@@ -17,6 +17,7 @@ class CategoryController extends Controller
     {
         $perPage = $request->input('per_page', 10); // Get the number of items per page from the request (default: 10)
         $branchId = $request->input('branch_id');
+        $branchId ??= 1; // If no branch ID is passed, use the first branch
         $category = Category::with('media')
             ->where('status', 1)
             ->whereHas('branches', function ($query) use ($branchId) {
